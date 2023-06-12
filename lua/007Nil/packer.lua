@@ -92,5 +92,20 @@ use ({
 
 use ("onsails/lspkind.nvim")
 use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+})
+use('neovim/nvim-lspconfig')
+use('jose-elias-alvarez/null-ls.nvim')
+use('MunifTanjim/prettier.nvim')
+
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 
   end)
