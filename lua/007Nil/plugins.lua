@@ -48,5 +48,67 @@ packer.startup(function(use)
                 'nvim-treesitter/nvim-treesitter',
                 run = ':TSUpdate'
         }
+        -- A super powerful autopair plugin for Neovim that supports multiple characters
+        -- GitHub: https://github.com/windwp/nvim-autopairs
+        use {
+                "windwp/nvim-autopairs",
+        }
+        -- A neovim plugin to persist and toggle multiple terminals during an editing session
+        -- GitHub: https://github.com/akinsho/toggleterm.nvim
+        use {
+                "akinsho/toggleterm.nvim",
+                tag = '*'
+        }
+        -- Use treesitter to autoclose and autorename html tag
+        -- GitHub: https://github.com/windwp/nvim-ts-autotag
+        use ("windwp/nvim-ts-autotag")
+
+        -- GitHub: https://github.com/VonHeikemen/lsp-zero.nvim
+        use {
+                'VonHeikemen/lsp-zero.nvim',
+                branch = 'v2.x',
+                requires = {
+                        -- LSP Support
+                        {'neovim/nvim-lspconfig'},             -- Required
+                        {                                      -- Optional
+                                'williamboman/mason.nvim',
+                                run = function()
+                                        pcall(vim.cmd, 'MasonUpdate')
+                                end,
+                        },
+                        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+                        -- Autocompletion
+                        {'hrsh7th/nvim-cmp'},     -- Required
+                        {'hrsh7th/cmp-nvim-lsp'}, -- Required
+                        {'L3MON4D3/LuaSnip'},     -- Required
+                        {'rafamadriz/friendly-snippets'} -- Optional
+                }
+        }
+
+        use("onsails/lspkind.nvim")
+
+        use { 'L3MON4D3/LuaSnip' }
+
+        use('jose-elias-alvarez/null-ls.nvim')
+
+        use {
+                'hrsh7th/nvim-cmp',
+                config = function ()
+                        require'cmp'.setup {
+                                snippet = {
+                                        expand = function(args)
+                                                require'luasnip'.lsp_expand(args.body)
+                                        end
+                                },
+
+                                sources = {
+                                        { name = 'luasnip' },
+                                        -- more sources
+                                },
+                        }
+                end
+        }
+        use { 'saadparwaiz1/cmp_luasnip' }
 
 end)
