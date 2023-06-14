@@ -111,4 +111,14 @@ packer.startup(function(use)
         }
         use { 'saadparwaiz1/cmp_luasnip' }
 
+        use {
+                'nvim-tree/nvim-tree.lua',
+                requires = {
+                        'nvim-tree/nvim-web-devicons', -- optional
+                },
+                config = function()
+                        require("nvim-tree").setup {}
+                end
+        }
+
 end)
