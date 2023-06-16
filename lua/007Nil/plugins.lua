@@ -20,12 +20,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use) 
         use 'wbthomason/packer.nvim'
-        --  A truecolor, solarized dark colorscheme
-        --  Github: https://github.com/svrana/neosolarized.nvim
-        use {
-                'svrana/neosolarized.nvim',
-                requires = { 'tjdevries/colorbuddy.nvim' }
-        }
+
         -- A blazing fast and easy to configure Neovim statusline written in Lua.
         -- Github: https://github.com/nvim-lualine/lualine.nvim
         use {
@@ -120,5 +115,8 @@ packer.startup(function(use)
                         require("nvim-tree").setup {}
                 end
         }
+        use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+        use { "catppuccin/nvim", as = "catppuccin" }
+
 
 end)
