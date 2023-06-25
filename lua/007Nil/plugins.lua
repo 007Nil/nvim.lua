@@ -112,4 +112,5 @@ packer.startup(function(use)
     }
     use {"catppuccin/nvim", as = "catppuccin"}
     use {"maxmellon/vim-jsx-pretty", requires={{ "yuezk/vim-js" }}}
+    use 'nvim-tree/nvim-web-devicons'
 end)
